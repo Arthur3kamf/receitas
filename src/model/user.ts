@@ -5,24 +5,23 @@ export type User = {
     nome: string;
     email: string;
     senha: string;
-    data_criacao: string;
+    data_criacao?: string;
 }
 
     export async function insert(user:User){
         await connection .query(
-            'INSERT INTO users(nome, email, senha, data_criacao) VALUES ($1, $2, $3, $4);',
+            'INSERT INTO usuario(nome, email, senha ) VALUES ($1, $2, $3);',
             [
                 user.nome,
                 user.email,
-                user.senha,
-                user.data_criacao
+                user.senha
             ]
         );
     }
 
     export async function getByEmail(email: string) {
         const { rows } = await connection .query(
-            'SELECT * FROM users WHERE email = $1',
+            'SELECT * FROM usuario WHERE email = $1',
             [email]
         );
         return rows [0];

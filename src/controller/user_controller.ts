@@ -6,7 +6,7 @@ export function show_login(req: Request, res: Response) {
 }
 
 export async function register(req: Request, res: Response) {
-    const { nome, email, senha, data_criacao} = req.body;
+    const { nome, email, senha } = req.body;
 
     if(!nome || !email || !senha){
         return res.render('login', {
@@ -31,8 +31,7 @@ export async function register(req: Request, res: Response) {
     const user: User = {
         nome,
         email,
-        senha,
-        data_criacao
+        senha
     }
 
     await insert(user);
