@@ -10,7 +10,7 @@ app.set('views', './src/views');
 app.use(express.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
-    res.render('index', { message: 'Hello' });
+    res.redirect('/user/login')
 });
 
 app.use(userRoutes)
